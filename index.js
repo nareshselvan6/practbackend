@@ -3,6 +3,7 @@ import cors from 'cors';
 import multer from "multer"
 import intpractice from './public/Schemas/Schemas.js';
 import mongoose from 'mongoose';
+import dotenv from'dotenv'
 
 const app= express()
 app.use(cors())
@@ -22,10 +23,11 @@ const storage =multer.diskStorage({
 const upload=multer({storage})
 
 
+dotenv.config()
 
 // -------------------\
 
-const mongoDB_URL = "mongodb+srv://user:LhdMs7x0QVWEcMZy@crud.wbcgw.mongodb.net/intpract";
+const mongoDB_URL = process.env.mongo_url;
 
 const ConnectDB = async (req, res) => {
   try {
